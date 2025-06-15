@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "PlannerAgent"
+version = "0.1.0"
+description = "An AutoGPT Forge agent specialized in planning and decomposing tasks."
+authors = ["Your Name <you@example.com>"] # Placeholder, can be changed
+license = "MIT"
+readme = "README.md" # A README will need to be created or copied
+
+packages = [{ include = "forge" }] # This assumes the 'forge' module is structured correctly within PlannerAgent
+
+[tool.poetry.dependencies]
+python = ">=3.10, <4.0"
+# These are common dependencies for a Forge agent.
+# Adjust as necessary if PlannerAgent has unique needs beyond standard Forge SDK.
+# The Forge SDK itself should be referenced correctly, often via a local path or git submodule if not installed globally.
+# Assuming it's structured to be found via the 'forge' include above or PYTHONPATH.
+# For this example, we'll list some common ones found in other agents.
+# Actual SDK dependency might be handled by the broader AutoGPT environment.
+
+# Core Forge/AutoGPT components are often implicitly available or managed by the runtime environment.
+# We'll list typical libraries an agent might use for its own specific logic, if any.
+# Since this PlannerAgent relies on LLMs, an HTTP client might be needed if not using Forge's built-in.
+# However, the current agent.py uses `chat_completion_request` from forge.sdk.
+# So, specific LLM client libraries like 'openai' might not be directly needed here if forge.sdk handles it.
+
+click = "*" # For potential CLI extensions, common in AutoGPT
+python-dotenv = "^1.0.0" # For .env file management
+pyyaml = "^6.0" # For YAML processing, if needed for configs
+# Add any other specific Python libraries the PlannerAgent might uniquely require.
+# For now, we'll keep it minimal as most functionality comes from forge.sdk.
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0"
+pytest-asyncio = "^0.20"
+# Add other dev dependencies like black, isort, mypy if desired for standalone development/testing
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 88

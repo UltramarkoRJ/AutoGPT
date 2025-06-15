@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "ReviewerAgent"
+version = "0.1.0"
+description = "An AutoGPT Forge agent specialized in reviewing code and other artifacts."
+authors = ["Your Name <you@example.com>"] # Placeholder
+license = "MIT"
+readme = "README.md" # A README will need to be created
+
+packages = [{ include = "forge" }]
+
+[tool.poetry.dependencies]
+python = ">=3.10, <4.0"
+# Common Forge agent dependencies
+click = "*"
+python-dotenv = "^1.0.0"
+pyyaml = "^6.0"
+# ReviewerAgent relies on LLMs via forge.sdk for its current implementation.
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0"
+pytest-asyncio = "^0.20"
+# black, isort, mypy, etc.
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 88
